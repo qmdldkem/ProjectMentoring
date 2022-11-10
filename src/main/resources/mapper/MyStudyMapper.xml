@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mentor.mentee.mapper.MyStudyMapper">
+
+    <select id="getMyStudyRoom" resultType="domain.MentorRoom">
+        select * from mentorRoom where user_id = #{mentor_id}
+    </select>
+
+    <insert id="uploadHomeWorkInfo">
+        insert into hwInfo (hwName, hwContent, writer, hwRegDate, hwDeadLine, CompleteMentee)
+        values(#{hwName}, #{hwContent}, #{writer}, SYSDATE, #{hwDeadLine}, 0)
+    </insert>
+
+    <select id="getHomeWorkInfo"  resultType="domain.HomeWorkInfo">
+        select * from hwInfo
+    </select>
+
+    <insert id="homeWorkSubmit" parameterType="domain.HomeWork">
+        insert into homework (mentorid, user_id, content, hwregdate, uuid, filename, uploadpath)
+        VALUES (#{mentorId}, #{user_id}, #{content}, sysdate, #{uuid, jdbcType=VARCHAR}, #{filename, jdbcType=VARCHAR}, #{uploadPath, jdbcType=VARCHAR})
+    </insert>
+
+    <select id="checkHomeWork" resultType="int">
+        select count(*) from HWINFO where writer = #{mentor_id}
+    </select>
+
+    <select id="getHomeWorkList" resultType="domain.HomeWork">
+        select * from homework
+    </select>
+
+    <update id="modifyHwInfo" parameterType="domain.HomeWorkInfo">
+        update hwInfo set hwName=#{hwName}, hwDeadLine=#{hwDeadLine}, hwContent=#{hwContent}, hwRegDate=sysdate
+        where writer = #{writer}
+    </update>
+
+    <delete id="deleteHwInfo">
+        delete from hwInfo where writer = #{writer}
+    </delete>
+
+    <select id="getHomeWork" resultType="domain.HomeWork">
+        select * from homework where user_id = #{user_id}
+    </select>
+
+
+</mapper>

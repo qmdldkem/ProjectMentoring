@@ -1,0 +1,37 @@
+# server port setting
+server:
+  port: 80
+
+# jdbc setting
+spring:
+    datasource:
+        hikari:
+            connection-test-query: SELECT 1
+            minimum-idle: 2
+            maximum-pool-size: 5
+            pool-name: SendBugHikariCP
+            auto-commit: false
+        driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+        url: jdbc:log4jdbc:mariadb://localhost:3306/mentor
+        username: root
+        password: r1r2r3r4
+        type: com.zaxxer.hikari.HikariDataSource
+# jsp setting
+    mvc:
+      view:
+        prefix: /WEB-INF/views/
+        suffix: .jsp
+      pathmatch:
+        matching-strategy: ANT_PATH_MATCHER
+        
+# mybatis setting 
+mybatis:
+    type-aliases-package: com.mentor.mentee.domain
+    mapper-locations: mapper/**/*.xml
+    configuration:
+        map-underscore-to-camel-case: true
+        default-statement-timeout: 30
+
+# jwt setting
+jwt:
+   secret: runtime

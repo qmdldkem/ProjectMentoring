@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mentor.mentee.mapper.MentorRoomMapper">
+
+    <insert id="createRoom">
+        INSERT INTO MentorRoom
+               (user_id, num, title, studyPeriod, studyWeekly,
+                studyTimeStart, studyTimeEnd, capacity, nowCapacity,
+                career, school, content)
+        VALUES (#{user_id}, mentor_room_seq.nextval, #{title}, #{studyPeriod}, #{studyWeekly},
+                #{studyTimeStart}, #{studyTimeEnd}, #{capacity}, 0,
+                #{career, jdbcType=VARCHAR}, #{school}, #{content})
+    </insert>
+
+    <update id="updateRoom">
+        UPDATE MentorRoom
+        SET title = #{title},
+            studyPeriod = #{studyPeriod}, studyWeekly = #{studyWeekly},
+            studyTimeStart = #{studyTimeStart}, studyTimeEnd = #{studyTimeEnd},
+            capacity= #{capacity}, career = #{career, jdbcType=VARCHAR},
+            school = #{school}, content = #{content}
+        WHERE user_id = #{user_id}
+    </update>
+
+    <delete id="delRoomInfo">
+        DELETE FROM MentorRoom WHERE user_id = #{user_id}
+    </delete>
+
+    <select id="getRoomInfoByNum"  resultType="domain.MentorRoom">
+        select * from MentorRoom where num = #{num}
+    </select>
+
+    <select id="getRoomInfoByID"  resultType="domain.MentorRoom">
+        select * from MentorRoom where user_id = #{user_id}
+    </select>
+
+
+</mapper>
