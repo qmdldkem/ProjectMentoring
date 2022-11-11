@@ -28,11 +28,11 @@
         DELETE FROM MentorRoom WHERE user_id = #{user_id}
     </delete>
 
-    <select id="getRoomInfoByNum"  resultType="domain.MentorRoom">
+    <select id="getRoomInfoByNum"  resultType="com.mentor.mentee.domain.MentorRoom">
         select * from MentorRoom where num = #{num}
     </select>
 
-    <select id="getRoomInfoByID"  resultType="domain.MentorRoom">
+    <select id="getRoomInfoByID"  resultType="com.mentor.mentee.domain.MentorRoom">
         select * from MentorRoom where user_id = #{user_id}
     </select>
 

@@ -1,13 +1,19 @@
 package com.mentor.mentee;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import lombok.extern.slf4j.Slf4j;
+
 @SpringBootApplication
-public class DemoApplication {
+@MapperScan
+@Slf4j
+public class MentorApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
+		SpringApplication.run(MentorApplication.class, args);
+		log.info("test");
 	}
 
 }

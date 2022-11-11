@@ -15,9 +15,9 @@ import org.springframework.web.servlet.config.annotation.*;
 import javax.annotation.Resource;
 
 // Spring MVC 프로젝트에 관련된 설정을 하는 클래스
-@Configuration
+//@Configuration
 // Controller 어노테이션이 셋팅되어 있는 클래스를 Controller로 등록한다.
-@EnableWebMvc
+//@EnableWebMvc
 //스캔할 패키지를 지정한다.
 @ComponentScan(basePackages = {"controller", "common"})
 public class ServletAppContext implements WebMvcConfigurer {
