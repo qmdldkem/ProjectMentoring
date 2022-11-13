@@ -28,13 +28,14 @@
 			</tr>
 			<tr>
 				<th scope="col">작성시간</th>
-				<td data-col="credat"></td>
+				<td data-col="credate"></td>
 			</tr>
 			<tr>
 				<td colspan="2" data-col="boardContent"></td>
 			</tr>
 		</thead>
 	</table>
+
 	<script>
 		$(document).ready(function() {
 			getBoard();
