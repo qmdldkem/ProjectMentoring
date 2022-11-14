@@ -5,7 +5,10 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
+@Slf4j
 public class ViewController {
 	/*
 	 * 
@@ -17,11 +20,11 @@ public class ViewController {
 	@GetMapping("/views/**")
 	public String goPage(HttpServletRequest request) {
 		String goPath = request.getRequestURI();
+		log.info("goPath=>{}", goPath);
 		goPath = goPath.substring(6);
 		return goPath;
 	}
 	//  /WEB-INF/views/user/login.jsp
 	
-
 	
 }

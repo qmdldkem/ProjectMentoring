@@ -61,7 +61,7 @@
 		</where>
 		<trim prefix="ORDER BY">
 			<if test='order == null or order == ""'>
-		 		IF(BOARD_PARENT_NUM=0, BOARD_NUM, BOARD_PARENT_NUM) desc,SORT
+		 		SORT
 			</if>
 		</trim>
 	</select>

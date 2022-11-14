@@ -1,15 +1,12 @@
 package com.mentor.mentee.service;
-import com.mentor.mentee.dao.MentorRoomDAO;
 import com.mentor.mentee.dao.UserDao;
 import com.mentor.mentee.domain.MentorRoom;
 import com.mentor.mentee.domain.User;
 import lombok.RequiredArgsConstructor;
 import com.mentor.mentee.mapper.MentorRoomMapper;
 import com.mentor.mentee.mapper.UserMapper;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.SessionAttribute;
 
 import javax.annotation.Resource;
 
@@ -17,19 +14,11 @@ import javax.annotation.Resource;
 @RequiredArgsConstructor
 public class MentorRoomService {
 
-    final UserDao userDAO;
-    final MentorRoomDAO mentorRoomDAO;
-    final UserMapper userMapper;
-    final MentorRoomMapper roomMapper;
-
     @Resource(name = "loginUserBean")
     private User loginUserBean;
-
-//    // user 에서 userInfo 조회 (나중에 uerService로 옮기기..)
-//    public User getUserInfo (@SessionAttribute("user_id") String user_id){
-//        User userInfo = userDAO.getUserInfo(user_id);
-//        return userInfo;
-//    }
+    final UserDao userDAO;
+    final UserMapper userMapper;
+    final MentorRoomMapper roomMapper;
 
     // GET userInfo BY user_id
     public User getUserByID(String user_id){
