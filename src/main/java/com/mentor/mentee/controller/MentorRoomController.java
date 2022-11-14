@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-
 @Controller
 @RequestMapping("/MentorRoom")
 @RequiredArgsConstructor
@@ -22,7 +21,6 @@ public class MentorRoomController {
 
     @Resource(name = "loginUserBean")
     private User loginUserBean;
-
     final UserDao userDao;
     final MentorRoomService mentorRoomService;
     final MyStudyService myStudyService;
@@ -71,7 +69,6 @@ public class MentorRoomController {
         mentorRoomService.updateRoom(mentorRoom);
         return "redirect:/MyStudy/StudyInfo/";
     }
-
 
     @GetMapping("/getRoomInfo")
     public @ResponseBody MentorRoom getRoomInfoByJSON (){
