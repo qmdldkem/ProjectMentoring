@@ -16,11 +16,15 @@
 		<thead>
 			<tr>
 				<th scope="col">번호</th>
-				<td data-col="boardNum"></td>
+				<td>
+					<input type="text" name="boardNum" disabled>
+				</td>
 			</tr>
 			<tr>
 				<th scope="col">제목</th>
-				<td data-col="boardTitle"></td>
+				<td>
+					<input type="text" name="boardTitle">
+				</td>
 			</tr>
 			<tr>
 				<th scope="col">작성자</th>
@@ -31,7 +35,9 @@
 				<td data-col="credate"></td>
 			</tr>
 			<tr>
-				<td colspan="2" data-col="boardContent"></td>
+				<td colspan="2">
+					<textarea name="boardContent"></textarea>
+				</td>
 			</tr>
 			<tr>
 				<th colspan="2">
