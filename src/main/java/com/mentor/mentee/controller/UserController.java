@@ -45,8 +45,8 @@ public class UserController {
     @PostMapping("/login_pro")
     public String login_pro(@Valid @ModelAttribute("tempLoginUserBean") User tempLoginUser, BindingResult result) {
         log.info(tempLoginUser.toString());
-        System.out.println("controller : "+tempLoginUser.getUser_id());
-        System.out.println("controller : "+tempLoginUser.getUser_pw());
+        System.out.println("controller : "+tempLoginUser.getUserId());
+        System.out.println("controller : "+tempLoginUser.getUserPw());
         System.out.println(result.getAllErrors().toString());
 
         if(result.hasErrors()) {

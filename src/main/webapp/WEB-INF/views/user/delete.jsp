@@ -32,16 +32,16 @@
 <script>
   function checkUserEmailExist(){
 
-    var user_email = $("#user_email").val()
+    var userEmail = $("#userEmail").val()
 
-    if(user_email.length == 0){
+    if(userEmail.length == 0){
       alert('이메일을 입력해주세요')
       return
     }
     $.ajax({
-      url : '${root}user/checkUserEmailExist/' + user_email+'.',
+      url : '${root}user/checkUserEmailExist/' + userEmail+'.',
       type : 'get',
-      // data : {'email' : user_email},
+      // data : {'email' : userEmail},
       dataType : 'text',
 
 
@@ -76,33 +76,33 @@
           <form:form action='${root}user/delete_pro' method='post' modelAttribute="deleteUserBean">
 <%--            <form:hidden path="userEmailExist"/>--%>
             <div class="form-group">
-              <form:label path="user_name">이름</form:label>
-              <form:input path="user_name" class='form-control' readonly="true"/>
+              <form:label path="userName">이름</form:label>
+              <form:input path="userName" class='form-control' readonly="true"/>
             </div>
             <div class="form-group">
-              <form:label path="user_id">아이디</form:label>
-              <form:input path="user_id" class='form-control' readonly="true"/>
+              <form:label path="userId">아이디</form:label>
+              <form:input path="userId" class='form-control' readonly="true"/>
             </div>
             <div class="form-group">
-              <form:label path="user_pw">현재 비밀번호</form:label>
-              <form:password path="user_pw" class='form-control'/>
-              <form:errors path='user_pw' style='color:red'/>
+              <form:label path="userPw">현재 비밀번호</form:label>
+              <form:password path="userPw" class='form-control'/>
+              <form:errors path='userPw' style='color:red'/>
             </div>
             <div class="form-group">
-              <form:label path="user_pw2">비밀번호 확인</form:label>
-              <form:password path="user_pw2" class='form-control'/>
-              <form:errors path='user_pw2' style='color:red'/>
+              <form:label path="userPw2">비밀번호 확인</form:label>
+              <form:password path="userPw2" class='form-control'/>
+              <form:errors path='userPw2' style='color:red'/>
             </div>
 <%--            <!-- 이메일 & 중복확인 -->--%>
 <%--            <div class="form-group">--%>
-<%--              <form:label path="user_email">이메일</form:label>--%>
+<%--              <form:label path="userEmail">이메일</form:label>--%>
 <%--              <div class="input-group">--%>
-<%--                <form:input path="user_email" class='form-control' onkeypress="resetUserEmailExist()"/>--%>
+<%--                <form:input path="userEmail" class='form-control' onkeypress="resetUserEmailExist()"/>--%>
 <%--                <div class="input-group-append">--%>
 <%--                  <button type="button" class="btn btn-primary" onclick='checkUserEmailExist()'>중복확인</button>--%>
 <%--                </div>--%>
 <%--              </div>--%>
-<%--              <form:errors path="user_email" style='color:red'/>--%>
+<%--              <form:errors path="userEmail" style='color:red'/>--%>
               <!-- 전화번호 -->
 <%--              <div class="form-group">--%>
 <%--                <form:label path="user_phone">전화번호 ( - 포함 13자리 입력)</form:label>--%>

@@ -13,18 +13,18 @@ public class RestApiController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/user/checkUserIdExist/{user_id}")
-    public String checkUserIdExist(@PathVariable String user_id) {
+    @GetMapping("/user/checkUserIdExist/{userId}")
+    public String checkUserIdExist(@PathVariable String userId) {
 
-        boolean chk = userService.checkuserIdExist(user_id);
+        boolean chk = userService.checkuserIdExist(userId);
 
         return chk + "";
     }
 
-    @GetMapping("/user/checkUserEmailExist/{user_email}")
-    public String checkUserEmailExist(@PathVariable String user_email) {
-        System.out.println(user_email);
-        boolean chk1 = userService.checkuserEmailExist(user_email);
+    @GetMapping("/user/checkUserEmailExist/{userEmail}")
+    public String checkUserEmailExist(@PathVariable String userEmail) {
+        System.out.println(userEmail);
+        boolean chk1 = userService.checkuserEmailExist(userEmail);
         System.out.println(chk1);
         return chk1 + "";
     }

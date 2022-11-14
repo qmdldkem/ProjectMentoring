@@ -22,34 +22,34 @@ public class UserValidator implements Validator {
         System.out.println(beanName);
         if(!beanName.equals("tempLoginUserBean") && !beanName.equals("modifyUserBean") && !beanName.equals("deleteUserBean")) {
             if (beanName.equals("joinUser") ) {
-                if (userBean.getUser_pw().equals(userBean.getUser_pw2()) == false) {
-                    errors.rejectValue("user_pw", "NotEquals");
-                    errors.rejectValue("user_pw2", "NotEquals");
+                if (userBean.getUserPw().equals(userBean.getUserPw2()) == false) {
+                    errors.rejectValue("userPw", "NotEquals");
+                    errors.rejectValue("userPw2", "NotEquals");
                 }
             }
 
             if (beanName.equals("joinUser")) {
 
                 if (userBean.isUserIdExist() == false) {
-                    errors.rejectValue("user_id", "DontCheckUserIdExist");
+                    errors.rejectValue("userId", "DontCheckUserIdExist");
                 }
             }
             if (userBean.isUserEmailExist() == false) {
-                errors.rejectValue("user_email", "DontCheckUserEmailExist");
+                errors.rejectValue("userEmail", "DontCheckUserEmailExist");
             }
 
         }if(beanName.equals("modifyUserBean")){
-            if (userBean.getUser_pw().equals(userBean.getUser_pw2()) == false) {
-                errors.rejectValue("user_pw", "NotEquals");
-                errors.rejectValue("user_pw2", "NotEquals");
+            if (userBean.getUserPw().equals(userBean.getUserPw2()) == false) {
+                errors.rejectValue("userPw", "NotEquals");
+                errors.rejectValue("userPw2", "NotEquals");
             }
             if (userBean.isUserEmailExist() == false) {
-                errors.rejectValue("user_email", "DontCheckUserEmailExist");
+                errors.rejectValue("userEmail", "DontCheckUserEmailExist");
             }
         }if(beanName.equals("deleteUserBean")) {
-            if (userBean.getUser_pw().equals(userBean.getUser_pw2()) == false) {
-                errors.rejectValue("user_pw", "NotEquals");
-                errors.rejectValue("user_pw2", "NotEquals");
+            if (userBean.getUserPw().equals(userBean.getUserPw2()) == false) {
+                errors.rejectValue("userPw", "NotEquals");
+                errors.rejectValue("userPw2", "NotEquals");
             }
         }
     }
