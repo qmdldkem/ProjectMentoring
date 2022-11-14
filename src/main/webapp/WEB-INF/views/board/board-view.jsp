@@ -12,6 +12,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<c:import url="/WEB-INF/views/includes/header.jsp"/>
 	<table class="table">
 		<thead>
 			<tr>
@@ -81,5 +82,6 @@
 			})
 		}
 	</script>
+	<c:import url="/WEB-INF/views/includes/footer.jsp"/>
 </body>
 </html>
