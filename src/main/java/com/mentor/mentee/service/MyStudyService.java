@@ -9,7 +9,6 @@ import java.util.UUID;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.mentor.mentee.dao.MentorRoomDAO;
 import com.mentor.mentee.dao.MyStudyDao;
 import com.mentor.mentee.dao.UserDao;
 import com.mentor.mentee.domain.HomeWork;
@@ -26,7 +25,7 @@ public class MyStudyService {
 
     final UserDao userDao;
     final MyStudyDao myStudyDao;
-    final MentorRoomDAO mentorRoomDAO;
+  
 
     public MentorRoom getMyStudyRoom(String user_id) {
         String mentor_id = userDao.getMentorId(user_id);
