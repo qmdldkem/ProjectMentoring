@@ -39,10 +39,16 @@
 		//http method post, get
 		$.ajax({
 			type:'GET',
-			url:'/boards',
+			url:'/boards', //localhost~호출
 			data : data,
+<<<<<<< HEAD
+			accept: "application/json", //빼도 무방
+			success:function(res){ //get방식으로 /boards 갔다가 응답이 잘 왔으면 실행할 내용
+
+=======
 			accept: "application/json",
 			success:function(res){
+>>>>>>> branch 'master' of https://github.com/ygs3004/ProjectMentoring.git
 				$('#totalDiv').html('총갯수:' + res.total);
 				let html = '';
 				let list = res.list;
@@ -60,11 +66,19 @@
 					html += '</tr>';
 				}
 				console.log(html);
+<<<<<<< HEAD
+				$('tBody').html(html);
+			},
+		error : funtion(err){ //오류가 났을 경울 출력
+			consloe.log(err);
+		}
+=======
 				$('#tBody').html(html);
 			},
 			error : function(err){
 				console.log(err);
 			}
+>>>>>>> branch 'master' of https://github.com/ygs3004/ProjectMentoring.git
 		})
 	}
 	

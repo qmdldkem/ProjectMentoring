@@ -2,7 +2,7 @@ package com.mentor.mentee.service;
 
 import javax.annotation.Resource;
 
-import com.mentor.mentee.dao.MentorRoomDAO;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,6 @@ public class UserService {
     @Autowired
     final UserDao userDao;
 
-    final MentorRoomDAO mentorRoomDAO;
 
     @Resource(name = "loginUserBean")
     private User loginUserBean;

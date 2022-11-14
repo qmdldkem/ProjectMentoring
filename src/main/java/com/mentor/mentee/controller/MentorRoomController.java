@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-
 @Controller
 @RequestMapping("/MentorRoom")
 @RequiredArgsConstructor
@@ -22,14 +21,13 @@ public class MentorRoomController {
 
     @Resource(name = "loginUserBean")
     private User loginUserBean;
-
     final UserDao userDao;
     final MentorRoomService mentorRoomService;
     final MyStudyService myStudyService;
     final HomeController homeController;
 
     //스터디개설
-    @GetMapping("/createRoom")
+    @GetMapping("/create-room")
     public String CreateMentorRoom(HttpServletResponse response) throws IOException {
         //userId 앞으로 개설된 방 있는지 확인
         boolean result = mentorRoomService.getAssignedRoomNo(loginUserBean.getUserId());
@@ -41,7 +39,7 @@ public class MentorRoomController {
 //            request.setAttribute("message", "스터디는 한개만 개설할 수 있습니다.");
             return "redirect:/";
         }else{
-            return "/MentorRoom/createRoom";
+            return "/mentor-room/study-create";
         }
     }
 
@@ -71,7 +69,6 @@ public class MentorRoomController {
         mentorRoomService.updateRoom(mentorRoom);
         return "redirect:/MyStudy/StudyInfo/";
     }
-
 
     @GetMapping("/getRoomInfo")
     public @ResponseBody MentorRoom getRoomInfoByJSON (){
