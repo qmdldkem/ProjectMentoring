@@ -23,12 +23,18 @@
 				</td>
 			</tr>
 			<tr>
-				<th scope="col">내용</th>
+				<th scope="col">작성자</th>
 				<td>
-					<textarea name="boardContent" id="boardContent">
-					</textarea>
+					<input type="text" name="crename" id="crename">
 				</td>
 			</tr>
+			<tr>
+				<th scope="col">내용</th>
+				<td>
+					<textarea name="boardContent" id="boardContent"></textarea>
+				</td>
+			</tr>
+			
 			<tr>
 				<th colspan="2">
 					<button type="button" onclick="insertBoard()">등록</button>
