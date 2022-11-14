@@ -29,7 +29,7 @@ public class MentorRoomController {
     final HomeController homeController;
 
     //스터디개설
-    @GetMapping("/createRoom")
+    @GetMapping("/create-room")
     public String CreateMentorRoom(HttpServletResponse response) throws IOException {
         //user_id 앞으로 개설된 방 있는지 확인
         boolean result = mentorRoomService.getAssignedRoomNo(loginUserBean.getUser_id());
@@ -41,7 +41,7 @@ public class MentorRoomController {
 //            request.setAttribute("message", "스터디는 한개만 개설할 수 있습니다.");
             return "redirect:/";
         }else{
-            return "/MentorRoom/createRoom";
+            return "/mentor-room/study-create";
         }
     }
 
