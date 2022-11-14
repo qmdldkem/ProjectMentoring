@@ -37,10 +37,10 @@
 		}
 		$.ajax({
 			type:'GET',
-			url:'/boards',
+			url:'/boards', //localhost~호출
 			data : data,
-			accept: "application/json",
-			success:function(res){
+			accept: "application/json", //빼도 무방
+			success:function(res){ //get방식으로 /boards 갔다가 응답이 잘 왔으면 실행할 내용
 
 				$('#totalDiv').html('총갯수:' + res.total);
 				let html = '';
@@ -60,7 +60,10 @@
 				}
 				console.log(html);
 				$('tBody').html(html);
-			}
+			},
+		error : funtion(err){ //오류가 났을 경울 출력
+			consloe.log(err);
+		}
 		})
 	}
 	
