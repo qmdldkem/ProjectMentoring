@@ -27,10 +27,10 @@ public class MentorRoomController {
     final HomeController homeController;
 
     //스터디개설
-    @GetMapping("/createRoom")
+    @GetMapping("/create-room")
     public String CreateMentorRoom(HttpServletResponse response) throws IOException {
-        //user_id 앞으로 개설된 방 있는지 확인
-        boolean result = mentorRoomService.getAssignedRoomNo(loginUserBean.getUser_id());
+        //userId 앞으로 개설된 방 있는지 확인
+        boolean result = mentorRoomService.getAssignedRoomNo(loginUserBean.getUserId());
         if(result){
             response.setContentType("text/html; charset=UTF-8");
             PrintWriter out = response.getWriter();
@@ -39,27 +39,27 @@ public class MentorRoomController {
 //            request.setAttribute("message", "스터디는 한개만 개설할 수 있습니다.");
             return "redirect:/";
         }else{
-            return "/MentorRoom/createRoom";
+            return "/mentor-room/study-create";
         }
     }
 
     //스터디개설 후 이동
     @PostMapping("/roomInfo")
     public String createRoom(MentorRoom mentorRoom, Model model){
-        mentorRoomService.createRoom(mentorRoom, loginUserBean.getUser_id());
+        mentorRoomService.createRoom(mentorRoom, loginUserBean.getUserId());
         return "redirect:/MyStudy/StudyInfo";
     }
 
     @GetMapping("/modifyRoom")
     public String modifyRoom(Model model){
-        MentorRoom roomInfo = mentorRoomService.getRoomInfoByID(loginUserBean.getUser_id());
+        MentorRoom roomInfo = mentorRoomService.getRoomInfoByID(loginUserBean.getUserId());
         model.addAttribute("mentorRoom",roomInfo);
         return "/MentorRoom/modifyRoom";
     }
 
     @GetMapping("/delRoom")
     public String deleteRoom(){
-        mentorRoomService.delRoomInfo(loginUserBean.getUser_id());
+        mentorRoomService.delRoomInfo(loginUserBean.getUserId());
         return "redirect:/";
     }
 
@@ -72,8 +72,8 @@ public class MentorRoomController {
 
     @GetMapping("/getRoomInfo")
     public @ResponseBody MentorRoom getRoomInfoByJSON (){
-        System.out.println(loginUserBean.getUser_id());
-        MentorRoom roomInfo = mentorRoomService.getRoomInfoByID(loginUserBean.getUser_id());
+        System.out.println(loginUserBean.getUserId());
+        MentorRoom roomInfo = mentorRoomService.getRoomInfoByID(loginUserBean.getUserId());
         System.out.println(roomInfo.toString());
     return roomInfo;
     }

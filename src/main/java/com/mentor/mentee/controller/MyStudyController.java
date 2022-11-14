@@ -35,10 +35,10 @@ public class MyStudyController {
     public String myStudy(Model model){
         // 접속한 회원의 멘토룸 정보
         log.info("접속한 loginUserBean : "+loginUserBean);
-        String user_id = loginUserBean.getUser_id();
-        MentorRoom mentorRoom =  myStudyService.getMyStudyRoom(user_id);
+        String userId = loginUserBean.getUserId();
+        MentorRoom mentorRoom =  myStudyService.getMyStudyRoom(userId);
         //접속한 회원의 과제 유무 체크
-        boolean checkHomeWork = myStudyService.checkHomeWork(user_id);
+        boolean checkHomeWork = myStudyService.checkHomeWork(userId);
 
         model.addAttribute("mentorRoom", mentorRoom);
         model.addAttribute("checkHomeWork", checkHomeWork);
@@ -53,9 +53,9 @@ public class MyStudyController {
     @PostMapping("/UploadSuccess")
     public String uploadSuccess(HomeWorkInfo homeWorkInfo, Model model){
 
-        String user_id = loginUserBean.getUser_id();
+        String userId = loginUserBean.getUserId();
 
-        homeWorkInfo.setWriter(user_id);
+        homeWorkInfo.setWriter(userId);
 
         int success = myStudyService.uploadHomeWorkInfo(homeWorkInfo);
         model.addAttribute("homeWork", homeWorkInfo);
@@ -66,11 +66,11 @@ public class MyStudyController {
     @GetMapping("/MentorHomeWorkInfo")
     public String mentorHomeWorkInfo (Model model) {
 
-        String user_id = loginUserBean.getUser_id();
+        String userId = loginUserBean.getUserId();
 
-        HomeWorkInfo homeWorkInfo = myStudyService.getHomeWorkInfo(user_id);
-        MentorRoom mentorRoom = myStudyService.getMyStudyRoom(user_id);
-        List<HomeWork> hwList = myStudyService.getHomeWorkList(user_id);
+        HomeWorkInfo homeWorkInfo = myStudyService.getHomeWorkInfo(userId);
+        MentorRoom mentorRoom = myStudyService.getMyStudyRoom(userId);
+        List<HomeWork> hwList = myStudyService.getHomeWorkList(userId);
 
         model.addAttribute("hwList", hwList);
         model.addAttribute("homeWork", homeWorkInfo);
@@ -82,9 +82,9 @@ public class MyStudyController {
     @GetMapping("/MenteeHomeWorkInfo")
     public String menteeHomeWorkInfo(Model model){
 
-        String user_id = loginUserBean.getUser_id();
-        HomeWorkInfo homeWorkInfo = myStudyService.getHomeWorkInfo(user_id);
-        HomeWork homeWork = myStudyService.getHomeWork(user_id);
+        String userId = loginUserBean.getUserId();
+        HomeWorkInfo homeWorkInfo = myStudyService.getHomeWorkInfo(userId);
+        HomeWork homeWork = myStudyService.getHomeWork(userId);
 
         model.addAttribute("homeWork", homeWork);
         model.addAttribute("homeWorkInfo", homeWorkInfo);
@@ -95,8 +95,8 @@ public class MyStudyController {
     @GetMapping("/HomeWorkSubmitForm")
     public String homeWorkSubmit(Model model){
 
-        String user_id = loginUserBean.getUser_id();
-        HomeWorkInfo homeWorkInfo = myStudyService.getHomeWorkInfo(user_id);
+        String userId = loginUserBean.getUserId();
+        HomeWorkInfo homeWorkInfo = myStudyService.getHomeWorkInfo(userId);
 
         model.addAttribute("homeWorkInfo", homeWorkInfo);
 
@@ -114,8 +114,8 @@ public class MyStudyController {
     @GetMapping("/HomeWorkModifyForm")
     public String homeWorkModify(Model model){
 
-        String user_id = loginUserBean.getUser_id();
-        HomeWorkInfo homeWorkInfo = myStudyService.getHomeWorkInfo(user_id);
+        String userId = loginUserBean.getUserId();
+        HomeWorkInfo homeWorkInfo = myStudyService.getHomeWorkInfo(userId);
 
         model.addAttribute("homeWorkInfo", homeWorkInfo);
 

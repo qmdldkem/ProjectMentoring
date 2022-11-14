@@ -8,7 +8,7 @@ import lombok.Data;
 public class MentorRoom {
 
     private Integer num = 0;
-    private String user_id;
+    private String userId;
     private String title;
     private String studyPeriod;
     private String studyWeekly;

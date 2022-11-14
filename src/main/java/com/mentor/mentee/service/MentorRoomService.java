@@ -16,60 +16,61 @@ public class MentorRoomService {
 
     @Resource(name = "loginUserBean")
     private User loginUserBean;
+
     final UserDao userDAO;
     final UserMapper userMapper;
     final MentorRoomMapper roomMapper;
 
-    // GET userInfo BY user_id
-    public User getUserByID(String user_id){
-        return userDAO.getUserInfo(user_id);
+    // GET userInfo BY userId
+    public User getUserByID(String userId){
+        return userDAO.getUserInfo(userId);
     }
 
-    // GET roomInfo BY user_id
-    public MentorRoom getRoomInfoByID(String user_id){
-        return roomMapper.getRoomInfoByID(user_id);
+    // GET roomInfo BY userId
+    public MentorRoom getRoomInfoByID(String userId){
+        return roomMapper.getRoomInfoByID(userId);
     }
 
     // Insert roomInfo
     @Transactional
-    public void createRoom(MentorRoom roomInfo, String user_id) {
-        if(roomInfo.getUser_id()==null){
-            roomInfo.setUser_id(user_id);
+    public void createRoom(MentorRoom roomInfo, String userId) {
+        if(roomInfo.getUserId()==null){
+            roomInfo.setUserId(userId);
         }
         roomInfo.setNum(0);
         roomMapper.createRoom(roomInfo);
-        int roomNo = getRoomNoByID(user_id); //id로 만들어진 roomNum 조회
-        usersAddRoomNo(roomNo, user_id);
+        int roomNo = getRoomNoByID(userId); //id로 만들어진 roomNum 조회
+        usersAddRoomNo(roomNo, userId);
     }
 
     // Delete roomInfo
-    public void delRoomInfo(String user_id){
-        roomMapper.delRoomInfo(user_id);
-        userMapper.updateRoomNo(0, user_id);
+    public void delRoomInfo(String userId){
+        roomMapper.delRoomInfo(userId);
+        userMapper.updateRoomNo(0, userId);
         loginUserBean.setMentorRoomNo(0);
     }
 
     // Update roomInfo
     public void updateRoom(MentorRoom mentorRoom){
-        mentorRoom.setUser_id(loginUserBean.getUser_id());
+        mentorRoom.setUserId(loginUserBean.getUserId());
         roomMapper.updateRoom(mentorRoom);
     }
 
-    // Update RoomNUM TO users (BY user_id)
-    public void usersAddRoomNo(int mentorRoomNo, String user_id){
-        userMapper.updateRoomNo(mentorRoomNo, user_id);
+    // Update RoomNUM TO users (BY userId)
+    public void usersAddRoomNo(int mentorRoomNo, String userId){
+        userMapper.updateRoomNo(mentorRoomNo, userId);
         loginUserBean.setMentorRoomNo(mentorRoomNo);
     }
 
-    // Select RoomNUM (BY user_id)
-    public int getRoomNoByID(String user_id){
-        int roomNum = roomMapper.getRoomInfoByID(user_id).getNum();
+    // Select RoomNUM (BY userId)
+    public int getRoomNoByID(String userId){
+        int roomNum = roomMapper.getRoomInfoByID(userId).getNum();
         return roomNum;
     }
 
-    //CHECK RoomNum BY user_id
-    public boolean getAssignedRoomNo(String user_id){
-        if(roomMapper.getRoomInfoByID(user_id) == null){
+    //CHECK RoomNum BY userId
+    public boolean getAssignedRoomNo(String userId){
+        if(roomMapper.getRoomInfoByID(userId) == null){
             return false;
         } else{
             return true;

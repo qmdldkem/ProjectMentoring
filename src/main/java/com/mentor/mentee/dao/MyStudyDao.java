@@ -53,7 +53,7 @@ public class MyStudyDao {
         return mapper.deleteHwInfo(writer);
     }
 
-    public HomeWork getHomeWork(String user_id) {
-        return mapper.getHomeWork(user_id);
+    public HomeWork getHomeWork(String userId) {
+        return mapper.getHomeWork(userId);
     }
 }

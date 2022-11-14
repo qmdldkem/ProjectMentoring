@@ -40,15 +40,15 @@
 
     function checkUserIdExist(){
 
-        var user_id = $("#user_id").val()
+        var userId = $("#userId").val()
 
-        if(user_id.length == 0){
+        if(userId.length == 0){
             alert('아이디를 입력해주세요')
             return
         }
 
         $.ajax({
-            url : '${root}user/checkUserIdExist/' + user_id,
+            url : '${root}user/checkUserIdExist/' + userId,
             type : 'get',
             dataType : 'text',
             success : function(result){
@@ -71,16 +71,16 @@
 
     function checkUserEmailExist(){
 
-        var user_email = $("#user_email").val()
+        var userEmail = $("#userEmail").val()
 
-        if(user_email.length == 0){
+        if(userEmail.length == 0){
             alert('이메일을 입력해주세요')
             return
         }
         $.ajax({
-            url : '${root}user/checkUserEmailExist/' + user_email+'.',
+            url : '${root}user/checkUserEmailExist/' + userEmail+'.',
             type : 'get',
-            // data : {'email' : user_email},
+            // data : {'email' : userEmail},
             dataType : 'text',
 
 
@@ -119,69 +119,69 @@
                         <form:hidden path="userIdExist"/>
                         <form:hidden path="userEmailExist"/>
                       <div class="form-group" >
-                          <form:radiobutton path="user_role" value="1" label="멘토로 가입하기 " ></form:radiobutton>
+                          <form:radiobutton path="userRole" value="1" label="멘토로 가입하기 " ></form:radiobutton>
                           <br>
-                          <form:radiobutton path="user_role" value="2" label="멘티로 가입하기 " ></form:radiobutton>
+                          <form:radiobutton path="userRole" value="2" label="멘티로 가입하기 " ></form:radiobutton>
                           <br>
                       </div>
                         <!-- 이름 -->
                           <div class="form-group">
-                            <form:label path="user_name">이름</form:label>
-                            <form:input path="user_name" class='form-control'/>
-                            <form:errors path="user_name" style='color:red'/>
+                            <form:label path="userName">이름</form:label>
+                            <form:input path="userName" class='form-control'/>
+                            <form:errors path="userName" style='color:red'/>
                         </div>
                         <!-- 아이디 & 중복확인 -->
                         <div class="form-group">
-                            <form:label path="user_id">아이디</form:label>
+                            <form:label path="userId">아이디</form:label>
                             <div class="input-group">
-                                <form:input path="user_id" class='form-control' onkeypress="resetUserIdExist()"/>
+                                <form:input path="userId" class='form-control' onkeypress="resetUserIdExist()"/>
                                 <div class="input-group-append">
                                     <button type="button" class="btn btn-primary" onclick='checkUserIdExist()'>중복확인</button>
                                 </div>
                             </div>
-                            <form:errors path="user_id" style='color:red'/>
+                            <form:errors path="userId" style='color:red'/>
                         </div>
                         <!-- 비밀번호 입력 -->
                         <div class="form-group">
-                            <form:label path="user_pw">비밀번호 (영 대,소문자,숫자만 입력가능)</form:label>
-                            <form:password path="user_pw" class='form-control'/>
-                            <form:errors path='user_pw' style='color:red'/>
+                            <form:label path="userPw">비밀번호 (영 대,소문자,숫자만 입력가능)</form:label>
+                            <form:password path="userPw" class='form-control'/>
+                            <form:errors path='userPw' style='color:red'/>
                         </div>
                         <!-- 비밀번호 확인 -->
                         <div class="form-group">
-                            <form:label path="user_pw2">비밀번호 확인</form:label>
-                            <form:password path="user_pw2" class='form-control'/>
-                            <form:errors path='user_pw2' style='color:red'/>
+                            <form:label path="userPw2">비밀번호 확인</form:label>
+                            <form:password path="userPw2" class='form-control'/>
+                            <form:errors path='userPw2' style='color:red'/>
                         </div>
                         <!-- 이메일 & 중복확인 -->
                         <div class="form-group">
-                            <form:label path="user_email">이메일</form:label>
+                            <form:label path="userEmail">이메일</form:label>
                             <div class="input-group">
-                                <form:input path="user_email" class='form-control' onkeypress="resetUserEmailExist()"/>
+                                <form:input path="userEmail" class='form-control' onkeypress="resetUserEmailExist()"/>
                                 <div class="input-group-append">
                                     <button type="button" class="btn btn-primary" onclick='checkUserEmailExist()'>중복확인</button>
                                 </div>
                             </div>
-                            <form:errors path="user_email" style='color:red'/>
+                            <form:errors path="userEmail" style='color:red'/>
                             <br>
                             <!-- 전화 번호 -->
                             <div class="form-group">
-                                <form:label path="user_phone">전화번호 ( - 포함 13자리 입력)</form:label>
-                                <form:input path="user_phone" class='form-control' width="80px"/>
-                                <form:errors path="user_phone" style='color:red'/>
+                                <form:label path="userPhone">전화번호 ( - 포함 13자리 입력)</form:label>
+                                <form:input path="userPhone" class='form-control' width="80px"/>
+                                <form:errors path="userPhone" style='color:red'/>
                             </div>
                             <!-- 성별 선택 -->
                             <div class="form-group">
-                                <form:label path="user_gender">성별</form:label><br>
-                                <form:radiobutton path="user_gender" value="1" label="남자"></form:radiobutton>
-                                <form:radiobutton path="user_gender" value="2" label="여자"></form:radiobutton>
-                                <form:errors path="user_gender" style='color:red'/>
+                                <form:label path="userGender">성별</form:label><br>
+                                <form:radiobutton path="userGender" value="1" label="남자"></form:radiobutton>
+                                <form:radiobutton path="userGender" value="2" label="여자"></form:radiobutton>
+                                <form:errors path="userGender" style='color:red'/>
                             </div>
                             <!-- 학교 입력 -->
                              <div class="form-group">
-                                <form:label path="user_school">학교</form:label>
-                                <form:input path="user_school" class='form-control'/>
-                                <form:errors path="user_school" style='color:red'/>
+                                <form:label path="userSchool">학교</form:label>
+                                <form:input path="userSchool" class='form-control'/>
+                                <form:errors path="userSchool" style='color:red'/>
                             </div>
                         <div class="form-group">
                             <div class="text-right">

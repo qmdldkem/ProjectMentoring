@@ -33,14 +33,14 @@
           </c:if>
           <form:form action="${root }user/login_pro" method='post' modelAttribute="tempLoginUserBean">
             <div class="form-group">
-              <form:label path="user_id">아이디</form:label>
-              <form:input path="user_id" class='form-control'/>
-              <form:errors path='user_id' style='color:red'/>
+              <form:label path="userId">아이디</form:label>
+              <form:input path="userId" class='form-control'/>
+              <form:errors path='userId' style='color:red'/>
             </div>
             <div class="form-group">
-              <form:label path="user_pw">비밀번호</form:label>
-              <form:password path="user_pw" class='form-control'/>
-              <form:errors path='user_pw' style='color:red'/>
+              <form:label path="userPw">비밀번호</form:label>
+              <form:password path="userPw" class='form-control'/>
+              <form:errors path='userPw' style='color:red'/>
             </div>
             <div class="form-group text-right">
               <form:button class='btn btn-primary'>로그인</form:button>

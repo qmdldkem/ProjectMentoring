@@ -16,27 +16,25 @@ public class UserService {
     @Autowired
     final UserDao userDao;
 
-
-
     @Resource(name = "loginUserBean")
     private User loginUserBean;
 
-    public boolean checkuserIdExist(String user_id) {
+    public boolean checkuserIdExist(String userId) {
 
-        String user_name = userDao.checkUserIdExist(user_id);
+        String userName = userDao.checkUserIdExist(userId);
 
-        if(user_name == null) {
+        if(userName == null) {
             return true;
         } else {
             return false;
         }
     }
 
-    public boolean checkuserEmailExist(String user_email) {
-        System.out.println(user_email);
-        String user_emailCheck = userDao.checkUserEmailExist(user_email);
+    public boolean checkuserEmailExist(String userEmail) {
+        System.out.println(userEmail);
+        String userEmailCheck = userDao.checkUserEmailExist(userEmail);
         
-        if(user_emailCheck == null) {
+        if(userEmailCheck == null) {
             return true;
         } else {
             return false;
@@ -48,54 +46,54 @@ public class UserService {
     }
 
     public void getLoginUserInfo(User tempLoginUserBean) {
-        System.out.println("service : "+tempLoginUserBean.getUser_id());
-        System.out.println("service : "+tempLoginUserBean.getUser_pw());
+        System.out.println("service : "+tempLoginUserBean.getUserId());
+        System.out.println("service : "+tempLoginUserBean.getUserPw());
 
         User tempLoginUserBean2 = userDao.getLoginUserInfo(tempLoginUserBean);
 
         if(tempLoginUserBean2 != null) {
-            loginUserBean.setUser_idx(tempLoginUserBean2.getUser_idx());
-            loginUserBean.setUser_name(tempLoginUserBean2.getUser_name());
-            loginUserBean.setUser_id(tempLoginUserBean2.getUser_id());
-            loginUserBean.setUser_role(tempLoginUserBean2.getUser_role());
-            loginUserBean.setUser_school(tempLoginUserBean2.getUser_school());
+            loginUserBean.setUserIdx(tempLoginUserBean2.getUserIdx());
+            loginUserBean.setUserName(tempLoginUserBean2.getUserName());
+            loginUserBean.setUserId(tempLoginUserBean2.getUserId());
+            loginUserBean.setUserRole(tempLoginUserBean2.getUserRole());
+            loginUserBean.setUserSchool(tempLoginUserBean2.getUserSchool());
             loginUserBean.setMentorRoomNo(tempLoginUserBean2.getMentorRoomNo());
             loginUserBean.setUserLogin(true);
         }
     }
 
     public void getModifyUserInfo(User modifyUserBean) {
-        User tempModifyUserBean = userDao.getModifyUserInfo(loginUserBean.getUser_idx());
+        User tempModifyUserBean = userDao.getModifyUserInfo(loginUserBean.getUserIdx());
 
-        modifyUserBean.setUser_id(tempModifyUserBean.getUser_id());
-        modifyUserBean.setUser_name(tempModifyUserBean.getUser_name());
+        modifyUserBean.setUserId(tempModifyUserBean.getUserId());
+        modifyUserBean.setUserName(tempModifyUserBean.getUserName());
 
-        modifyUserBean.setUser_idx(loginUserBean.getUser_idx());
+        modifyUserBean.setUserIdx(loginUserBean.getUserIdx());
     }
 
     public void modifyUserInfo(User modifyUserBean) {
 
-        modifyUserBean.setUser_idx(loginUserBean.getUser_idx());
+        modifyUserBean.setUserIdx(loginUserBean.getUserIdx());
 
         userDao.modifyUserInfo(modifyUserBean);
     }
 
     public void getDeleteUserInfo(User deleteUserBean) {
-        User tempDeleteUserBean = userDao.getDeleteUserInfo(loginUserBean.getUser_idx());
+        User tempDeleteUserBean = userDao.getDeleteUserInfo(loginUserBean.getUserIdx());
 
-        deleteUserBean.setUser_id(tempDeleteUserBean.getUser_id());
-        deleteUserBean.setUser_name(tempDeleteUserBean.getUser_name());
+        deleteUserBean.setUserId(tempDeleteUserBean.getUserId());
+        deleteUserBean.setUserName(tempDeleteUserBean.getUserName());
 
-        deleteUserBean.setUser_idx(loginUserBean.getUser_idx());
+        deleteUserBean.setUserIdx(loginUserBean.getUserIdx());
     }
     public void deleteUserInfo(User deleteUserBean) {
 
-        deleteUserBean.setUser_idx(loginUserBean.getUser_idx());
+        deleteUserBean.setUserIdx(loginUserBean.getUserIdx());
 
         userDao.deleteUserInfo(deleteUserBean);
     }
     /**
-     *  user_id를 넣엇을때 mentee의 아이디면 mentor id를 알려주는 method
+     *  userId를 넣엇을때 mentee의 아이디면 mentor id를 알려주는 method
     */
 
 
